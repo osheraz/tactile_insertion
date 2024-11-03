@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<launch>
+
+
+  <arg name="with_tactile" default="true"/>
+  <arg name="with_ext_camera" default="true"/>
+
+
+  <group if="$(arg with_tactile)">
+    <node name="allsight2" pkg="tactile_insertion" type="tactile_image_publisher.py" output="screen" clear_params="true">
+       <param name="dev_name" value="0" />
+       </node>
+    <node name="allsight4" pkg="tactile_insertion" type="tactile_image_publisher.py" output="screen" clear_params="true">
+       <param name="dev_name" value="2" />
+       </node>
+     <node name="allsight6" pkg="tactile_insertion" type="tactile_image_publisher.py" output="screen" clear_params="true">
+       <param name="dev_name" value="4" />
+       </node>
+     </group>
+
+  <!-- Setup tracking system -->
+<!--  <group if="$(arg with_ext_camera)">-->
+<!--    <include file="$(find tactile_insertion)/launch/continuous_detection.launch"/>-->
+<!--  </group>-->
+
+
+</launch>
